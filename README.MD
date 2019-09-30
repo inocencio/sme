@@ -25,8 +25,8 @@ SME uses Node.JS as back-end solution. Only JavaScript is used in both sides, ba
 
 In order to make it happen, you will need:
 
-* [Node.JS 9.0+](http://nodejs.org);
-* [Express.JS 3.0](http://expressjs.com);
+* [Node.JS 9.0+](http://nodejs.org)
+* [Express.JS 3.0](http://expressjs.com)
 * [MongoDB any version](https://www.mongodb.com/download-center)
 
 Please, read `package.json` for more information.
@@ -35,9 +35,9 @@ Please, read `package.json` for more information.
 
 Some screenshots.
 
-![Looking for events](https://github.com/inocencio/sme/screens/001.png "001")
-![New Event](https://github.com/inocencio/sme/screens/002.png "002")
-![Achievement](https://github.com/inocencio/sme/screens/003.png "003")
+![Looking for events](screens/001.png?raw=true "001")
+![New Event](screens/002.png?raw=true "002")
+![Achievement](screens/003.png?raw=true "003")
 
 ## F.A.Q
 
@@ -69,7 +69,7 @@ SME was actually aimed for a real application. I just modified the source code t
 
 You can contact me over my social media links.
 
-...[Linkedin](https://www.linkedin.com/in/inocencio/)
-...[Stack Overflow](https://stackoverflow.com/users/621883/ito?tab=profile)
-...[GitHub](https://github.com/inocencio)
-...[Twitter](https://twitter.com/itosrtk) - Personal Account
+[Linkedin](https://www.linkedin.com/in/inocencio/)
+[Stack Overflow](https://stackoverflow.com/users/621883/ito?tab=profile)
+[GitHub](https://github.com/inocencio)
+[Twitter](https://twitter.com/itosrtk) - Personal Account
