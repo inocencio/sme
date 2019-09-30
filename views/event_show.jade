@@ -1,0 +1,60 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/javascripts/jquery-te/jquery-te-Style.css')
+    div.container
+        br
+        div.box.event-frame
+            h2 #{event.name}
+            hr
+            div.row-fluid
+                div.span12
+                    div.row-fluid
+                        div.span5
+                            table
+                                tr(style='vertical-align: top!important;')
+                                    td
+                                        img#img-main(style='width: 300px!important; height: 200px!important;', class='img-polaroid'
+                                            src='/photo/showThumbnailPhotoById/#{event.id}', title='Clique para ver em tamanho real.')
+                                    td
+                                        if photos.length > 1
+                                            table.table.table-condensed.span4(style='text-align: left!important; float: left;')
+                                                each photo in photos
+                                                    tr
+                                                        td
+                                                            a(href='#', onclick='javascript:changePhoto("#{photo.id}");')
+                                                                img(id='img-#{photo.id}', style='width: 130px!important; height: 61px!important;',
+                                                                    src='data:#{photo.contentType};base64,#{photo.data}')
+                        div.span7
+                            table.table.table-striped.table-condensed
+                                tr
+                                    td.event-table-first-column
+                                        strong Categoria:
+                                    td #{category.description}
+                                tr
+                                    td.event-table-first-column
+                                        strong Tags:
+                                    td #{event.tags}
+                                tr
+                                    td.event-table-first-column
+                                        strong Classificação:
+                                    td #{event.rating}
+                                tr
+                                    td.event-table-first-column
+                                        strong Endereço:
+                                    td #{event.address}
+                                tr
+                                    td.event-table-first-column
+                                        strong Data(s):
+                                    td
+                                        each date in event.dates
+                                            span #{date.day}/#{date.month}/#{date.year} às #{date.hour} &nbsp
+                                tr
+                                    td.event-table-first-column
+                                        strong Ingresso:
+            br
+            div.row-fluid
+                #desc-content!= event.description
+
+    //script page
+    script(src='/javascripts/pages/page_event_show.js', type='text/javascript')

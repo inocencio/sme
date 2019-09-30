@@ -1,0 +1,153 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/javascripts/jquery-te/jquery-te-Style.css')
+    link(rel='stylesheet', href='/javascripts/select2/select2.css')
+    link(rel='stylesheet', href='/javascripts/textboxlist/textboxlist.css')
+    link(rel='stylesheet', href='/javascripts/textboxlist/autocomplete.css')
+    link(rel='stylesheet', href='/javascripts/ito-uploader/uploader.css')
+    link(rel='stylesheet', href='/stylesheets/pages/page_event_new.css')
+    input#token(type='hidden', value='#{token}')
+    input#edit(type='hidden', value='#{edit}')
+    input#array-dateDay(type='hidden', value='#{dateDay}')
+    input#array-dateHour(type='hidden', value='#{dateHour}')
+    input#array-ticketGender(type='hidden', value='#{ticketGender}')
+    input#array-ticketValue(type='hidden', value='#{ticketValue}')
+    input#field-category(type='hidden', value='#{category}')
+    input#field-rating(type='hidden', value='#{rating}')
+    div.container
+        br
+        if errorMsgs.length > 0
+            div.row
+                div.span7.offset2.alert.alert-error
+                    h5 Não possível cadastrar o evento devido ao(s) seguinte(s) erro(s):
+                    each error in errorMsgs
+                        p #{error}
+
+        div.row
+            div.box-frame.span7.offset2
+                form(method='post', class='form-cad', action='/event/new')
+                    fieldset
+                        legend.
+                            Publicar Novo Evento
+                        label(for='name') Nome
+                            span.required *
+                            &nbsp
+                        input.input-xxlarge(type='text', name='name', id='name', autocomplete='on', value='#{name}')
+                        p
+                            label(for='address') Endereço
+                                span.required *
+                                &nbsp
+                            input.input-xxlarge(type='text', name='address', id='address', value='#{address}')
+                        p
+                            label(for='dates') Datas
+                                span.required *
+                            ul#list-dates(data-bind='foreach: dates()')
+                                li
+                                    div.form-inline
+                                        input.input-small(type='text', name='dateDay', data-bind='dateMask: {format: "dd/MM/yyyy"}, value: day', onblur='javascript:validateDate(this);')
+                                        span -
+                                        input.input-mini(type='text', name='dateHour', data-bind='value: hour', onblur='javascript:validateTime(this);')
+                                        &nbsp
+                                        a.btn(href='#', data-bind='visible: $root.dates().length < 10, click: $root.addDate', title='Adicionar outra?')
+                                            i.icon-plus
+                                        a.btn(href='#', data-bind='visible: $root.dates().length > 1, click: $root.removeDate', title='Remover data atual?')
+                                            i.icon-minus
+                                        span.help-inline
+                        p
+                            label(for='tickets') Ingresso
+                                span.required *
+                            label.radio
+                                input(type='radio', name='optTicket', id='optTicket1', value='optTicket1', onclick='javascript:statusRadioTicket(this);')
+                                | Pago
+                            label.radio
+                                input(type='radio', name='optTicket', id='optTicket2', value='optTicket2', onclick='javascript:statusRadioTicket(this);')
+                                | Entrada Franca
+                            label.radio
+                                input(type='radio', name='optTicket', id='optTicket3', value='optTicket3', onclick='javascript:statusRadioTicket(this);')
+                                | Convidados
+                            ul#list-tickets(data-bind='foreach: tickets()')
+                                li
+                                    div.form-inline
+                                        select.input-small(data-bind='options: $root.genders(), value: gender, optionText: gender', name='ticketGender')
+                                        &nbsp
+                                        div.input-prepend.input-append
+                                            span.add-on R$
+                                            input.input-mini(type='text', data-bind='value: value', name='ticketValue')
+                                        &nbsp
+                                        a.btn(href='#', data-bind='visible: $root.tickets().length < 10, click: $root.addTicket', title='Adicionar outro?')
+                                            i.icon-plus
+                                        a.btn(href='#', data-bind='visible: $root.tickets().length > 1, click: $root.removeTicket', title='Remover ingresso atual?')
+                                            i.icon-minus
+                        p
+                            label(for='category') Categoria
+                                span.required *
+                            select(id='category', style='width:230px', name='category')
+                                option(value='') - Selecione -
+                                each cat in categories
+                                    option(value='#{cat.id}') #{cat.description}
+                        p
+                            label(for='tags') Tags
+                            div.form_friends
+                                input#tags.input-xxlarge(type='text', name='tags', value='#{tags}')
+                        p
+                            label(for='rating') Classificação Indicativa
+                            select(id='rating', style='width:230px', name='rating')
+                                option(value='') - Selecione -
+                                option(value='0') Livre
+                                option(value='1') 10+
+                                option(value='2') 12+
+                                option(value='3') 14+
+                                option(value='4') 16+
+                                option(value='5') 18+
+                        p
+                            label(for='fileupload') Fotos
+                            a.btn#btn-photo(href='#modal-photo', role='button', onclick='javascript:openModalPhoto();') Adicionar...
+                        p#render-photos
+                        p
+                            label.input-xxlarge(for='description') Descrição
+                                span.required *
+                            textarea(name='description', id='description', ito-maxlength='512', value='#{description}')= description
+                        input.btn.btn-primary#btn-submit(type='submit', value='Publicar')
+
+    //modal upload de fotos
+    div#modal-photo.modal.hide.fade(tabindex='-1', role='dialog', ariaaria-labelledby='myModalLabel', aria-hidden='true')
+        div.modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true', onclick='javascript:closeModalPhoto();') x
+            h3#myModalLabel Fotos do Evento
+        div.modal-body
+            label Adicione até 3 fotos.
+            input#files-upload.btn(type='file', name='files[]', data-url='/upload', multiple)
+            button.btn#btn-remove-all(onclick='javascript:removeAll()') Limpar
+            div#files-done
+            table#files-table.table.table-hover
+                thead
+                    tr
+                        th Preview
+                        th Nome
+                        th Tamanho
+                        th Formato
+                        th Status
+                        th Remover?
+                tbody
+            div#files-table-error.alert.alert-error
+        div.modal-footer
+            button.btn.btn-info#btn-send(onclick='javascript:sendFiles();') Enviar
+            button.btn(data-dismiss='modal', aria-hidden='true', onclick='javascript:closeModalPhoto();') Fechar
+
+
+    //scripts extras da pagina
+    script(src='/javascripts/jquery-te/jquery-te-1.0.6.min.js')
+    script(src='/javascripts/jquery-mask-input-1.3.1.js')
+    script(src='/javascripts/modernizr.js')
+    script(src='/javascripts/select2/select2.min.js')
+    script(src='/javascripts/textboxlist/textbox-req01.js')
+    script(src='/javascripts/textboxlist/textboxlist.js')
+    script(src='/javascripts/textboxlist/textbox-req02.js')
+    script(src='/javascripts/textboxlist/textbox-req03.js')
+    script(src='/javascripts/knockout-2.2.1.js')
+    script(src='http://127.0.0.1:8000/socket.io/socket.io.js')
+    script(src='/javascripts/ito-uploader/itouploader.js')
+
+    //script page
+    script(src='/javascripts/pages/page_event_new.js', type='text/javascript')

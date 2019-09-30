@@ -1,0 +1,240 @@
+@amarelo-padrao: #F4CE23;
+@cinza-padrao: rgba(123, 126, 128, 0.98);
+@cinza-suave: rgba(217, 220, 222, 0.95);
+@cinza-padrao-mais-escuro: rgba(82, 85, 87, 0.98);
+@azul-padrao: #377CA8;
+@azul-padrao-mais-escuro: #2055a8;
+
+* {
+font-family: "Helvetica Neue",HelveticaNeue,Helvetica,Arial,sans-serif;
+text-decoration: none!important;
+}
+
+body {
+  //padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.span-menu {
+  color: #F4CE23;
+  font-weight: bold;
+}
+
+.search-menu {
+  font-size: 12px;
+  width: 200px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left:10px;
+  .rounded-corners(10px);
+  border: 0px;
+}
+
+a.link-menu {
+  color: #ffffff!important;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+a.link-menu:hover {
+  color: @amarelo-padrao!important;
+}
+
+a.link-social {
+  float: right;
+  margin-right: 20px;
+  color: @amarelo-padrao!important;
+}
+
+span.login-social {
+  float: right;
+  text-align: left!important;
+  padding-left: 40px;
+  margin-left: 40px;
+  color: @amarelo-padrao;
+  font-weight: bold;
+}
+
+span.required {
+  color: #ff0000;
+}
+
+a.link-social:hover {
+  text-decoration: underline!important;
+}
+
+.align-center {
+  text-align: center!important;
+}
+
+align-left {
+  text-align: left!important;
+}
+
+div#header {
+  padding: 3px;
+  color: #ffffff;
+  background: @azul-padrao;
+  background: -moz-linear-gradient(center top , @azul-padrao, @azul-padrao-mais-escuro) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(@azul-padrao), to(@azul-padrao-mais-escuro));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@azul-padrao, endColorstr=@azul-padrao-mais-escuro)";
+
+  border-bottom: 1px solid @amarelo-padrao;
+  box-sizing: border-box!important;
+  -webkit-box-sizing: border-box!important;
+  -moz-box-sizing: border-box!important;
+  width: 100%;
+  height: 101px;
+}
+
+element.style {
+  position: static;
+  top: 0;
+}
+
+div#header-panel {
+  position: static;
+  margin-bottom: 60px;
+
+  background-color: @cinza-padrao;
+
+  background: -moz-linear-gradient(center top , @cinza-padrao, @cinza-padrao-mais-escuro) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(@cinza-padrao), to(@cinza-padrao-mais-escuro));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@cinza-padrao, endColorstr=@cinza-padrao-mais-escuro)";
+
+  border-top: 2px solid @amarelo-padrao;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 5px;
+  color: #ffffff;
+  line-height: 1.8em;
+  vertical-align: middle;
+  border-bottom: 2px solid @azul-padrao;
+  z-index: 10;
+  .shadow-bottom;
+}
+
+div#profile {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px solid @amarelo-padrao;
+  width: 180px;
+  height: 60px;
+}
+
+#span-city {
+  color: @azul-padrao;
+  font-size: 24px;
+}
+
+#span-city:hover {
+  color: @azul-padrao;
+  font-size: 24px;
+  text-decoration: underline!important;
+}
+
+.form-cad label {
+  font-size: 1.1em!important;
+}
+
+.form-cad input[type="text"] {
+  font-size: 1.0em!important;
+}
+
+///////////////////////
+// Recursos Gerais
+///////////////////////
+
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.shadow-bottom() {
+  box-shadow: -1px 7px 12px -7px black;
+  -webkit-box-shadow: -1px 7px 12px -7px black;
+  -moz-box-shadow: -1px 7px 12px -7px black;
+}
+
+///////////////
+// Fontes
+//////////////
+
+.font-3em {
+  font-size: 3em!important;
+}
+
+.font-s24 {
+  font-size: 24px!important;
+}
+
+.font-s22 {
+  font-size: 22px!important;
+}
+
+.font-s18 {
+  font-size: 18px!important;
+}
+
+.font-s16 {
+  font-size: 16px!important;
+}
+
+.font-s14 {
+  font-size: 14pxl!important;
+}
+
+//TODO para customizar nome do evento em sombreado. Fonte: KeKanto
+//pode-se usar com dois divs dentro de uma imagem (img ou a)
+.top_cidades_with_photos_txt {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  position: absolute;
+  text-shadow: 0 1px 0 #000000;
+  width: 212px;
+}
+
+//TODO box genérico usado para abrigar vários elementos
+.box {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid #E4E5E8;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 6px 6px -5px #DDDDDD;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+//TODO Para customizar um campo de busca no meio do div do cabeçalho - onde a imagem se encontra
+#header_middle {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.08);
+  height: 39px;
+  margin: 0 auto;
+  padding: 8px 0 0 25px;
+  width: 440px;
+}
+
+///////////////////////
+// tooltip jQuery-UI
+///////////////////////
+
+.ui-tooltip {
+  width: 230px;
+  z-index: 99!important;
+  opacity: 1!important;
+  .shadow-bottom;
+}

@@ -1,0 +1,32 @@
+{
+    "name": "social media by Inocencio",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "nodemon app"
+    },
+    "dependencies": {
+        "express": "3.0.6",
+        "jade": "*",
+        "less-middleware": "*",
+        "mongodb" : "*",
+        "underscore" : "*",
+        "express-form" : "*",
+        "http-get" : "*",
+        "mongoose" : "*",
+        "passport" : "*",
+        "passport-facebook" : "*",
+        "request" : "*",
+        "datejs" : "*",
+        "gridfs-stream" : "*",
+        "gm" : "*",
+        "jquery-file-upload-middleware" : "*",
+        "socket.io" : "*",
+        "passport.socketio" : "*",
+        "formidable" : "*",
+        "mongoose-double" : "*",
+        "async" : "*",
+        "validator" : "1.1.1",
+        "string" : "1.3.1"
+    }
+}

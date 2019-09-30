@@ -1,0 +1,292 @@
+@amarelo-padrao: #F4CE23;
+@cinza-padrao: rgba(123, 126, 128, 0.98);
+@cinza-suave: rgba(249, 249, 249, 0.87);
+@cinza-padrao-mais-escuro: rgba(82, 85, 87, 0.98);
+@azul-padrao: #377CA8;
+@azul-padrao-mais-escuro: #2055a8;
+
+@navBarBgStart: #3D368B;
+@navBarBgEnd: #232051;
+
+body {
+  padding-top: 50px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+#chat {
+  position: fixed;
+  top: 0;
+  right: 0;
+  float: right;
+  height: 100%;
+  min-height: 100%;
+  width: 250px;
+  z-index: 300;
+
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid #E4E5E8;
+  box-shadow: 0 6px 6px -5px #DDDDDD;
+  padding: 10px;
+}
+
+#chat-main {
+  margin-bottom: 10px;
+}
+
+#chat tr td {
+  vertical-align: top;
+}
+
+#chat-table tr td {
+  text-align: left;
+}
+
+#dropdown-chat {
+  right: auto;
+}
+
+#dropdown-chat::before {
+  left: 12px;
+  right: auto;
+}
+
+#dropdown-chat::after {
+  left: 13px;
+  right: auto;
+}
+
+#header-site .navbar-inner {
+  background: @azul-padrao!important;
+  background: -moz-linear-gradient(center top , @azul-padrao, @azul-padrao-mais-escuro) repeat scroll 0 0 transparent!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(@azul-padrao), to(@azul-padrao-mais-escuro))!important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@azul-padrao, endColorstr=@azul-padrao-mais-escuro)"!important;
+}
+
+#header-site li {
+  background: @azul-padrao!important;
+  background: -moz-linear-gradient(center top , @azul-padrao, @azul-padrao-mais-escuro) repeat scroll 0 0 transparent!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(@azul-padrao), to(@azul-padrao-mais-escuro))!important;
+}
+
+#header-site li .active {
+  color: #ffffff;
+  background: @azul-padrao!important;
+  background: -moz-linear-gradient(center top , @azul-padrao, @azul-padrao-mais-escuro) repeat scroll 0 0 transparent!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(@azul-padrao), to(@azul-padrao-mais-escuro))!important;
+}
+
+#header-site li {
+  line-height: 28px!important;
+  height: 100%!important;
+}
+
+#img-logo {
+  margin-top: -10px!important;
+  width: 100px!important;
+  height: 42px!important;
+}
+
+#user-photo {
+  margin-left: 15px;
+}
+
+#form-search {
+  height: 52px!important;
+  line-height: 52px!important;
+}
+
+.box-frame {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid #E4E5E8;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 6px 6px -5px #DDDDDD;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.box-frame2 {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #DFDFDF;
+  border-radius: 11px 11px 11px 11px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  height: 200px;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -150px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  width: 400px;
+}
+
+///////////////////////////////////////////////////////////////
+// Jump Man Hey HO go go go go!!!
+///////////////////////////////////////////////////////////////
+
+.jumbotron {
+  background: @azul-padrao;
+  background: -moz-linear-gradient(center top , @azul-padrao, @azul-padrao-mais-escuro) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, left top, left bottom, from(@azul-padrao), to(@azul-padrao-mais-escuro));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@azul-padrao, endColorstr=@azul-padrao-mais-escuro)";
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset;
+  color: #FFFFFF;
+  padding: 40px 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+}
+.jumbotron h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+.jumbotron a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease-in-out 0s;
+}
+.jumbotron a:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+.jumbotron:after {
+  background: url("../img/bs-docs-masthead-pattern.png") repeat scroll center center transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.jumbotron:after {
+  background-size: 150px 150px;
+}
+
+.subhead {
+  border-bottom: 1px solid #DDDDDD;
+  text-align: left;
+}
+.subhead h1 {
+  font-size: 60px;
+}
+.subhead p {
+  margin-bottom: 20px;
+}
+.subhead .navbar {
+  display: none;
+}
+
+span.required {
+  color: #ff0000;
+}
+
+#side_controls {
+  background: none repeat scroll 0 0 #ECEDEF;
+  border-right: 1px solid #E6E6E6;
+  bottom: 0;
+  left: 0;
+  padding: 5px 0 0 2px;
+  position: absolute;
+  top: 0;
+  width: 61px;
+  z-index: 2;
+}
+
+///////////////////////////
+// General stuffs
+///////////////////////////
+
+.center-text {
+  text-align: center!important;
+}
+
+.rating-10 {
+
+}
+
+//////////////////////////
+// Agenda
+//////////////////////////
+
+.agenda-frame {
+  padding: 4px;
+  border: 1px solid @amarelo-padrao!important;
+  border-radius: 5px 5px 5px 5px;
+  background-color: @cinza-suave!important;
+  box-shadow: 0 3px 2px #E3E3E3;
+  width: 220px!important;
+}
+
+.agenda-img {
+  width: 220px;
+  height: 130px;
+}
+
+.agenda-frame h5 {
+  color: @azul-padrao!important;
+}
+
+.agenda-frame a {
+  font-weight: bold;
+  padding-bottom: 3px!important;
+  margin-bottom: 3px;
+}
+
+.agenda-cat {
+  font-weight: bold;
+}
+
+.agenda-event-para {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.agenda-event-table {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  width: 100%!important;
+}
+
+.agenda-event-time {
+  background: linear-gradient(#F9F9F9, #EDEDED) repeat scroll 0 0 transparent;
+  border: 1px solid #D3D3D3;
+  color: #717171;
+  text-shadow: 1px 1px 0 #F8F8F8;
+
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 0 1px 1px #E3E3E3;
+
+  display: inline-block;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  margin: 3px;
+  font-weight: bold;
+  line-height: 16px;
+}
+
+//////////////////////////
+// Evento Show
+//////////////////////////
+
+.event-frame {
+  padding: 15px;
+  border: 1px solid @amarelo-padrao!important;
+  border-radius: 5px 5px 5px 5px;
+  background-color: @cinza-suave!important;
+}
+
+.event-table-first-column {
+  width: 22%!important;
+}

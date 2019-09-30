@@ -1,0 +1,91 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/carousel.css')
+    input#cat(type='hidden', value='#{cat}')
+
+    div.container
+        ////////////////////////
+        // Agenda
+        ////////////////////////
+        div.row
+            div.span12.page-header
+                h2 Agenda
+                    normal&nbsp Salvador
+            div.span12.tabblable
+                ul#event-days.nav.nav-tabs
+                    each date in dates
+                        if date.active
+                            li.active
+                                a(href='##{date.id}', data-toggle='tab', onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{date.dateFormat} - #{date.dayWeek}
+                        else
+                            li
+                                a(href='##{date.id}', data-toggle='tab', onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{date.dateFormat} - #{date.dayWeek}
+                div#event-content.tab-content
+                    each date in dates
+                        //para uma data ativa renderiza todos os eventos das categorias daquela data
+                        if date.active
+                            div.tab-pane.active(id='#{date.id}')
+                                div.tabblable.tabs-left
+                                    ul.nav.nav-tabs
+                                        each cat in cats
+                                            if cat.active
+                                                li.active
+                                                    a(href='##{date.id}_#{cat.id}', data-toggle='tab',
+                                                    onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{cat.name}
+                                            else
+                                                li
+                                                    a(href='##{date.id}_#{cat.id}', data-toggle='tab',
+                                                    onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{cat.name}
+                                    div.tab-content
+                                        each cat in cats
+                                            if cat.active
+                                                div.tab-pane.active(id='#{date.id}_#{cat.id}')
+                                                    if events
+                                                        ul.thumbnails
+                                                            each event in events
+                                                                li.span3
+                                                                    div.thumbnail.agenda-frame
+                                                                        a(href='/event/show/#{event.id}')
+                                                                            img.agenda-img(src='/photo/showThumbnailPhotoById/#{event.id}')
+                                                                        h5.agenda-event-para #{event.catName}
+                                                                        p.agenda-event-para
+                                                                            a(href='/event/show/#{event.id}') #{event.name}
+                                                                        table.table.agenda-event-table
+                                                                            tr
+                                                                                td.agenda-event-time
+                                                                                    img.icon-time
+                                                                                    &nbsp
+                                                                                    strong #{event.hour}
+                                                                                td.agenda-event-time
+                                                                                    span #{event.hits}
+                                                                                    &nbsp
+                                                                                    strong views
+                                                                                td.agenda-event-time
+                                                                                    span #{event.rating}
+                                                    else
+                                                        p Não há eventos para o dia e categoria selecionadas.
+                                            else
+                                                div.tab-pane(id='#{date.id}_#{cat.id}')
+                        else
+                            div.tab-pane(id='#{date.id}')
+                                div.tabblable.tabs-left
+                                    ul.nav.nav-tabs
+                                        each cat in cats
+                                            if cat.active
+                                                li.active
+                                                    a(href='##{date.id}_#{cat.id}', data-toggle='tab',
+                                                    onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{cat.name}
+                                            else
+                                                li
+                                                    a(href='##{date.id}_#{cat.id}', data-toggle='tab',
+                                                    onclick='javascript:agendaChangeEvents("#{date.date}", "#{date.id}", "#{cat.id}");') #{cat.name}
+                                    div.tab-content
+                                        each cat in cats
+                                            if cat.active
+                                                div.tab-pane.active(id='#{date.id}_#{cat.id}')
+                                                    p #{cat.id} - #{cat.name}
+                                            else
+                                                div.tab-pane(id='#{date.id}_#{cat.id}')
+
+    script(src='/javascripts/pages/page_index.js')

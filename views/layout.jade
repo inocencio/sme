@@ -1,0 +1,150 @@
+doctype 5
+html(lang='en', ng-app='espiandoApp')
+    head
+        title Espiando.me :: #{title}
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+        link(rel='stylesheet', href='/javascripts/bootstrap/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/page_layout.css')
+        link(rel='stylesheet', href='/javascripts/bootstrap/css/bootstrap-responsive.min.css')
+
+        script(src='/javascripts/jquery-1.9.0.js')
+        script(src='/javascripts/bootstrap/js/bootstrap.min.js')
+        script(src='/javascripts/tooltip.js')
+        script(src='/javascripts/holder.js')
+        script(src='/javascripts/datejs.js')
+        script(src='/javascripts/splitter.js')
+
+    body
+        input#menu-active(type='hidden', value='nada')
+        //chat
+        if session.user
+            input#user-name(type='hidden', value='#{session.user.firstName}')
+            input#user-id(type='hidden', value='#{session.user._uid}')
+            div#chat
+                div(style='height:45px; min-height: 45px;')
+                div(style='height: 230px;')
+                    table.table.table-hover
+                        tr
+                            td
+                                if session.user
+                                    img(src='/showProfilePhoto/#{session.user._uid}', style='text-align: left; width:32px!important; height: 32px!important;')
+                            td
+                                if session.user
+                                    span #{session.user.name}
+                hr
+                div#chat-main(style='overflow-y: auto;')
+                div#chat-options
+                    form#chat-form(action='javascript:sendMsg();')
+                        center
+                            input#chat-input(type='text', style='width: 240px;')
+        //cabecalho
+        div#header-site.navbar.navbar-inverse.navbar-fixed-top
+            div.navbar-inner
+                div.container
+                    a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.brand(href='/')
+                        img#img-logo(src='/images/site/logo.png')
+                    div.nav-collapse.collapse
+                        ul.nav
+                            li#li-home.active
+                                a(href='/') Home
+                            li#li-event
+                                if session.user
+                                    a(href='/event/new') Novo Evento
+                                else
+                                    a#event-new(href='#', title='Logue com o Espiando ou alguma rede social para publicar um evento.') Novo Evento
+                            li#li-visited
+                                a(href='#') Mais Visitados
+                            li#li-voted
+                                a(href='#') Mais Votados
+                        form.navbar-form.pull-right
+                            div.nav-collapse.collapse
+                                ul.nav
+                                    li(style='height: 50px!important; line-height: 45px!important')
+                                        form#form-search.navbar-search
+                                            input#header-search.search-query.input-xlarge(type='text', placeholder='Pesquisar...')
+                                    if session.user
+                                        li
+                                            img#user-photo(src='/showProfilePhoto/#{session.user._uid}')
+                                        li.dropdown.active
+                                            a.dropdown-toggle(href='#', data-toggle='dropdown') #{session.user.name}
+                                                b.caret
+                                            ul.dropdown-menu
+                                                li
+                                                    a(href='#') Perfil
+                                                li
+                                                    a(href='#') Minhas Mensagens
+                                                li
+                                                    a(href='#') Minhas Fotos
+                                                li
+                                                    a(href='#') Meus Eventos
+                                                li.divider
+                                                li
+                                                    a#logout-site(href='/auth/logout') Sair
+                                    else
+                                        li(style='padding-left: 20px')
+                                            a.link-social(href='/auth/facebook',)
+                                                img#login-facebook(src='/images/social/facebook.png')
+                                        li
+                                            a.link-social(href='/auth/twitter')
+                                                img#login-twitter(src='/images/social/twitter.png')
+                                        li
+                                            a.link-social(href='/auth/google')
+                                                img#login-google(src='/images/social/google.png')
+
+        block content
+        div(style='height: 100px;')
+
+        //Footer interativo - chat
+        div#footer-site.navbar.navbar-inverse.navbar-fixed-bottom
+            div.navbar-inner
+                div.container
+                    a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    div.nav-collapse.collapse
+                        ul.nav
+                            li
+                                div.btn-group
+                                    a.btn-small.btn.dropdown-toggle(href='#') Fernanda Teixeira
+                                    a.btn-small.btn.dropdown-toggle.btn-success(href='#', id='chat-facebook_81') André Pinto
+                                    a.btn-small.btn.dropdown-toggle(href='#') Catarina de Oliveira
+                        form.navbar-form.pull-right
+                            div.nav-collapse.collapse
+                                ul.nav
+                                        li.dropdown.active
+                                            a.dropdown-toggle(href='#', data-toggle='dropdown') Chat (Festival de Verão)
+                                                b.caret
+                                            ul#dropdown-chat.dropdown-menu
+                                                li
+                                                    a(href='#')
+                                                        i.icon-chevron-right
+                                                        &nbsp Desabilitar Salas
+                                                li
+                                                    a(href='#')
+                                                        i.icon-chevron-down
+                                                        &nbsp Desabilitar Chat Privado
+                                                li
+                                                    a(href='#')
+                                                        i.icon-home
+                                                        &nbsp Trocar de Sala
+                                                li
+                                                    a(href='#')
+                                                        i.icon-wrench
+                                                        &nbsp Configurações
+                                        li
+                                            div.btn-group
+                                                a.btn.btn-inverse(href='#', onclick='javascript:expandChat()', title='Amplia o chat')
+                                                    i.icon-fullscreen.icon-white
+                                                a.btn.btn-inverse(href='#', onclick='javascript:noExpandChat()', title='Reduz o chat')
+                                                    i.icon-resize-small.icon-white
+                                                a.btn.btn-inverse(href='#', onclick='javascript:hideChat()', title='Esconde o chat')
+                                                    i.icon-remove-circle.icon-white
+        //icon-chevron-right
+        //icon-wrench
+        script(src='/javascripts/pages/chat.js')
