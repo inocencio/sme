@@ -37,7 +37,7 @@ Some screenshots.
 
 ![Looking for events](screens/001.png?raw=true "001")
 ![New Event](screens/002.png?raw=true "002")
-![Achievement](screens/003.png?raw=true "003")
+![Achievement](screens/003.jpg?raw=true "003")
 
 ## F.A.Q
 
@@ -69,7 +69,7 @@ SME was actually aimed for a real application. I just modified the source code t
 
 You can contact me over my social media links.
 
-[Linkedin](https://www.linkedin.com/in/inocencio/)
-[Stack Overflow](https://stackoverflow.com/users/621883/ito?tab=profile)
-[GitHub](https://github.com/inocencio)
-[Twitter](https://twitter.com/itosrtk) - Personal Account
+- [Linkedin](https://www.linkedin.com/in/inocencio/)
+- [Stack Overflow](https://stackoverflow.com/users/621883/ito?tab=profile)
+- [GitHub](https://github.com/inocencio)
+- [Twitter](https://twitter.com/itosrtk) - Personal Account
